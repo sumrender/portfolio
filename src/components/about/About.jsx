@@ -37,7 +37,7 @@ export default function About() {
         </div>
         <div className="github-container">
           <button className="github">
-            <a target={"_blank"} href="https://www.github.com/sumrender">
+            <a target={"_blank"} rel="noreferrer" href="https://www.github.com/sumrender">
               <span className="emoji">🔗</span> My Github
             </a>
           </button>

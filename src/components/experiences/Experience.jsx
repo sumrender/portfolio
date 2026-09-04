@@ -1,4 +1,4 @@
-export default function ({ exp }) {
+export default function Experience({ exp }) {
   return (
     <div className="experience-container">
       <div className="experience">
