@@ -1,72 +1,72 @@
-# Getting Started with Create React App
+# sumrender.in
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio of Sumrender Singh — full-stack software engineer. Built with [Astro](https://astro.build) as a fast, static, SEO-friendly single-page site, live at **[sumrender.in](https://sumrender.in)**.
+
+## Quick Start
+
+**Prerequisites:** Node.js `18.17.1` or `^20.3.0` (or higher, per [Astro's requirements](https://docs.astro.build/en/install-and-setup/#prerequisites)) and npm.
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/sumrender/portfolio.git
+cd portfolio
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the dev server at http://localhost:4321
+npm run dev
+```
+
+That's it — the site reloads automatically as you edit files in `src/`.
+
+### Production build
+
+```bash
+# Build the static site into dist/
+npm run build
+
+# Preview the production build locally
+npm run preview
+```
 
 ## Available Scripts
 
-In the project directory, you can run:
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `npm run dev`     | Start the Astro dev server (`localhost:4321`) |
+| `npm run start`   | Alias for `npm run dev`                      |
+| `npm run build`   | Build the production site to `./dist/`       |
+| `npm run preview` | Preview the production build locally         |
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+/
+├── public/              # Static assets served as-is (favicon, robots.txt, …)
+├── src/
+│   ├── components/      # UI components (sidebar)
+│   ├── data/
+│   │   └── data.js      # ✏️ Projects, experiences, social links — edit content here
+│   ├── layouts/
+│   │   └── Layout.astro # HTML shell, SEO meta tags & JSON-LD structured data
+│   ├── pages/
+│   │   └── index.astro  # The single page of the site
+│   └── styles/
+│       └── App.css      # Global styles
+├── astro.config.mjs     # Astro config (site URL, sitemap integration)
+└── package.json
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Editing Content
 
-### `npm test`
+All page content (projects, experience entries, social links, resume link) lives in [`src/data/data.js`](src/data/data.js). Edit it and the page updates on save — no component changes needed.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deployment
 
-### `npm run build`
+The site is a fully static build (`npm run build` → `dist/`) deployed to GitHub Pages with the custom domain **sumrender.in** (configured via DNS and the Astro `site` option in `astro.config.mjs`, which also feeds canonical URLs, the sitemap, and structured data).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Design Agent
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This repo includes the [Impeccable](https://github.com/pbakaus/impeccable) design skill (`.agents/skills/impeccable/`, tracked in `skills-lock.json`) for AI-assisted design work on the UI. Project design context lives in `PRODUCT.md` / `DESIGN.md` once initialized via the skill.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# sumrender.github.io
-# portfolio

@@ -64,7 +64,7 @@ export const projects = [
   // {
   //   name: "Sambot",
   //   desc: "Personalised chatbot for any website",
-  //   img: "https://sumrender.github.io/assets/sambot.png",
+  //   img: "https://sumrender.in/assets/sambot.png",
   //   stack: ["Flask", "OpenAI", "HTML", "CSS"],
   //   link: "https://github.com/sumrender/bikeChain-frontend",
   //   projectLink: "http://sambot.pythonanywhere.com/",
