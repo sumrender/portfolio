@@ -4,7 +4,6 @@ import Experiences from "./components/experiences/Experiences";
 import Intro from "./components/intro/Intro";
 import LeftSidebar from "./components/sidebar/LeftSidebar";
 import Projects from "./components/projects/Projects";
-import RightSideBar from "./components/sidebar/RightSidebar";
 
 function App() {
   return (
@@ -17,8 +16,6 @@ function App() {
         <Projects />
         <Experiences />
       </div>
-      {/* Create a moving tech section */}
-      {/* <RightSideBar /> */}
     </div>
   );
 }

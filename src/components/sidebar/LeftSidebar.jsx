@@ -10,16 +10,16 @@ export default function LeftSidebar() {
   return (
     <div className="left sidebar">
       <div className="links">
-        <a className="link" target={"_blank"} href={links.resume}>
+        <a className="link" target={"_blank"} rel="noreferrer" href={links.resume}>
           <img className="resume-logo" src={Resume} alt="resume" />
         </a>
-        <a target={"_blank"} className="link" href={links.linkedin}>
+        <a target={"_blank"} rel="noreferrer" className="link" href={links.linkedin}>
           <img className="linkedin-logo" src={Linkedin} alt="linkedin" />
         </a>
-        <a target={"_blank"} className="link" href={links.twitter}>
+        <a target={"_blank"} rel="noreferrer" className="link" href={links.twitter}>
           <img className="twitter-logo" src={Twitter} alt="twitter" />
         </a>
-        <a target={"_blank"} className="link" href={links.github}>
+        <a target={"_blank"} rel="noreferrer" className="link" href={links.github}>
           <img className="github-logo" src={Github} alt="github" />
         </a>
       </div>
