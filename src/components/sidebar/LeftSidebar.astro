@@ -1,0 +1,133 @@
+---
+import { Image } from 'astro:assets';
+import Linkedin from '../../assets/linkedin.png';
+import Twitter from '../../assets/twitter.png';
+import Github from '../../assets/github.png';
+import Resume from '../../assets/resume.png';
+
+import { links } from '../../data/data.js';
+---
+
+<aside class="left sidebar" aria-label="Social and Portfolio Links">
+  <nav class="links">
+    <a
+      class="link"
+      target="_blank"
+      rel="noreferrer"
+      href={links.resume}
+      aria-label="View Resume"
+    >
+      <Image
+        class="resume-logo"
+        src={Resume}
+        alt="Resume icon"
+        width={45}
+        height={45}
+      />
+    </a>
+    <a
+      target="_blank"
+      rel="noreferrer"
+      class="link"
+      href={links.linkedin}
+      aria-label="LinkedIn Profile"
+    >
+      <Image
+        class="linkedin-logo"
+        src={Linkedin}
+        alt="LinkedIn icon"
+        width={30}
+        height={30}
+      />
+    </a>
+    <a
+      target="_blank"
+      rel="noreferrer"
+      class="link"
+      href={links.twitter}
+      aria-label="Twitter Profile"
+    >
+      <Image
+        class="twitter-logo"
+        src={Twitter}
+        alt="Twitter icon"
+        width={30}
+        height={30}
+      />
+    </a>
+    <a
+      target="_blank"
+      rel="noreferrer"
+      class="link"
+      href={links.github}
+      aria-label="GitHub Profile"
+    >
+      <Image
+        class="github-logo"
+        src={Github}
+        alt="GitHub icon"
+        width={30}
+        height={30}
+      />
+    </a>
+  </nav>
+</aside>
+
+<style>
+  .sidebar {
+    height: 100%;
+    width: 60px;
+  }
+
+  .left {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: flex-end;
+    z-index: 100;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 25px;
+  }
+
+  .link {
+    text-decoration: none;
+    color: white;
+  }
+
+  .linkedin-logo, .twitter-logo, .github-logo {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .resume-logo {
+    height: 45px;
+    width: auto;
+    margin-left: -9px;
+    object-fit: contain;
+  }
+
+  @media screen and (max-width: 600px) {
+    .left {
+      background-color: #0d1523;
+      height: 50px;
+      padding: 2px 0 0 0;
+      width: 100%;
+      top: auto;
+      bottom: 0;
+    }
+
+    .links {
+      width: 100%;
+      flex-direction: row;
+      padding: 0;
+      align-items: center;
+      justify-content: space-around;
+    }
+  }
+</style>
