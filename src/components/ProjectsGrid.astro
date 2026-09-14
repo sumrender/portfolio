@@ -1,12 +1,12 @@
 ---
-import { projects } from '../data/data.js';
+import { projects } from '../data/data.ts';
 import SectionHead from './ui/SectionHead.astro';
 import Pill from './ui/Pill.astro';
 import PillLink from './ui/PillLink.astro';
 
 const hues = [16, 96, 210, 262, 150, 330];
 
-const cleanName = (name) =>
+const cleanName = (name: string): string =>
   name.replace(/^(\p{Extended_Pictographic}|\p{Emoji_Presentation})\s*/u, "").trim();
 ---
 

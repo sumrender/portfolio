@@ -1,5 +1,5 @@
 ---
-import { stats, highlightCards } from '../data/data.js';
+import { stats, highlightCards } from '../data/data.ts';
 import ArrowIcon from './ui/ArrowIcon.astro';
 ---
 
@@ -61,23 +61,25 @@ import ArrowIcon from './ui/ArrowIcon.astro';
 </div>
 
 <script>
-  const reduceMotion = window.matchMedia(
+  const reduceMotion: boolean = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
-  const values = document.querySelectorAll("#stats .stat-value");
-  const render = (el, animate) => {
-    const target = Number(el.dataset.count || "0");
-    const prefix = el.dataset.prefix || "";
+  const values: NodeListOf<Element> = document.querySelectorAll("#stats .stat-value");
+  const render = (el: Element, animate: boolean): void => {
+    const target: number = Number(
+      (el as HTMLElement).dataset.count || "0"
+    );
+    const prefix: string = (el as HTMLElement).dataset.prefix || "";
     if (!animate || reduceMotion) {
       el.textContent = `${prefix}${target}`;
       return;
     }
     el.textContent = `${prefix}0`;
     const duration = 1100;
-    const start = performance.now();
-    const tick = (now) => {
-      const t = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
+    const start: number = performance.now();
+    const tick = (now: number): void => {
+      const t: number = Math.min((now - start) / duration, 1);
+      const eased: number = 1 - Math.pow(1 - t, 3);
       el.textContent = `${prefix}${Math.round(target * eased)}`;
       if (t < 1) requestAnimationFrame(tick);
     };

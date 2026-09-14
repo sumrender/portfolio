@@ -8,13 +8,16 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check": "astro check"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
     "astro": "^5.4.2"
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "@astrojs/check": "^0.9.10",
+    "gh-pages": "^5.0.0",
+    "typescript": "^5.9.3"
   }
 }
