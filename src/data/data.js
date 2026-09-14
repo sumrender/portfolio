@@ -1,9 +1,41 @@
+export const stats = [
+  { value: 3, prefix: "+", label: "Years of coding" },
+  { value: 6, prefix: "+", label: "Projects built" },
+  { value: 3, prefix: "+", label: "Internships" },
+];
+
+export const tools = [
+  { name: "Node.js", desc: "APIs & backend services" },
+  { name: "React", desc: "Interactive interfaces" },
+  { name: "Express", desc: "Routing & middleware" },
+  { name: "MongoDB", desc: "Data modeling" },
+  { name: "TypeScript", desc: "Typed NestJS backends" },
+  { name: "Solidity", desc: "Smart contracts" },
+];
+
+export const highlightCards = [
+  {
+    theme: "rust",
+    title: "Node APIs, backend systems",
+    blurb: "Auth, testing, clean architecture — the server side I live in.",
+    href: "#projects",
+    cta: "See projects",
+  },
+  {
+    theme: "lime",
+    title: "React, MERN, Web3",
+    blurb: "Full-stack builds plus Solidity experiments onchain.",
+    href: "#tools",
+    cta: "See stack",
+  },
+];
+
 export const links = {
   linkedin: "https://www.linkedin.com/in/sumrendersingh/",
   github: "https://github.com/sumrender",
   resume:
     "https://drive.google.com/drive/folders/12ozZfsPOeRnF4uVgKa6fL5hpu6Qi7VGk?usp=drive_link",
-  twitter: "https://twitter.com/sumrenders",
+  twitter: "https://x.com/sumrenders",
 };
 export const projects = [
   {

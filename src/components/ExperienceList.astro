@@ -1,0 +1,74 @@
+---
+import { experiences } from '../data/data.js';
+---
+
+<section class="page-section" id="experience" aria-labelledby="experience-title">
+  <div class="wrap exp-grid">
+    <div class="exp-lede">
+      <p class="display exp-count">03</p>
+      <h2 class="section-head" id="experience-title">Internships & experience</h2>
+      <p class="section-sub">
+        Agile product work, typed NestJS backends, and MERN feature delivery.
+      </p>
+    </div>
+    <ol class="exp-list">
+      {
+        experiences.map((exp) => (
+          <li class="exp-row">
+            <p class="exp-date">{exp.date}</p>
+            <h3 class="exp-name">{exp.name}</h3>
+            <p class="exp-desc">{exp.desc}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .exp-grid {
+    display: grid;
+    grid-template-columns: minmax(240px, 360px) 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .exp-count {
+    font-size: clamp(3.4rem, 7vw, 6rem);
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .exp-list {
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .exp-row {
+    padding: 26px 4px;
+    border-bottom: 1px solid var(--line);
+  }
+  .exp-date {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: var(--lime-ink);
+    background: var(--lime);
+    border-radius: 999px;
+    padding: 5px 12px;
+    margin-bottom: 12px;
+  }
+  .exp-name {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .exp-desc {
+    color: var(--muted);
+    max-width: 62ch;
+  }
+  @media screen and (max-width: 860px) {
+    .exp-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

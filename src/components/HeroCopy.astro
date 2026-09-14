@@ -1,0 +1,252 @@
+---
+import { stats, highlightCards } from '../data/data.js';
+---
+
+<div class="hero-copy">
+  <h1 class="display hero-title">
+    <span class="line-bright">Software</span>
+    <span class="line-faint">Full-stack</span>
+  </h1>
+  <p class="hero-sub">
+    Backend-leaning engineer crafting intuitive APIs and engaging interfaces —
+    turning ideas into cleanly built products.
+  </p>
+
+  <dl class="stats" id="stats">
+    {
+      stats.map((s) => (
+        <div class="stat">
+          <dt class="stat-label">{s.label}</dt>
+          <dd
+            class="stat-value"
+            data-count={s.value}
+            data-prefix={s.prefix ?? ""}
+          >
+            {(s.prefix ?? "") + s.value}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+
+  <div class="signal-grid">
+    {
+      highlightCards.map((card) => (
+        <a
+          class={`signal signal-${card.theme}`}
+          href={card.href}
+          aria-label={`${card.title} — ${card.cta}`}
+        >
+          {card.theme === "rust" ? (
+            <svg class="signal-art" viewBox="0 0 400 260" aria-hidden="true">
+              <path d="M-20 230 C 90 210, 130 150, 110 100 S 190 30, 420 44" />
+              <path d="M-20 260 C 110 240, 190 190, 230 130 S 300 60, 420 84" />
+            </svg>
+          ) : (
+            <svg class="signal-art" viewBox="0 0 400 260" aria-hidden="true">
+              <path d="M-20 120 70 30 120 190 190 60 250 210 310 70 360 170 420 40" />
+              <path d="M-20 190 60 110 130 250 210 130 280 250 350 140 420 110" />
+            </svg>
+          )}
+          <span class="signal-title">{card.title}</span>
+          <span class="signal-blurb">{card.blurb}</span>
+          <span class="signal-go" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12h15" />
+              <path d="m13 6 6 6-6 6" />
+            </svg>
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  const values = document.querySelectorAll("#stats .stat-value");
+  const render = (el, animate) => {
+    const target = Number(el.dataset.count || "0");
+    const prefix = el.dataset.prefix || "";
+    if (!animate || reduceMotion) {
+      el.textContent = `${prefix}${target}`;
+      return;
+    }
+    el.textContent = `${prefix}0`;
+    const duration = 1100;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = `${prefix}${Math.round(target * eased)}`;
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          render(entry.target, true);
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  values.forEach((el) => {
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      render(el, false);
+      return;
+    }
+    io.observe(el);
+  });
+</script>
+
+<style>
+  .hero-copy {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .hero-title {
+    font-size: clamp(2.6rem, 8vw + 1rem, 6.8rem);
+    max-width: 11ch;
+  }
+  .hero-title span {
+    display: block;
+  }
+  .line-bright {
+    color: var(--ink);
+  }
+  .line-faint {
+    color: #6e6860;
+  }
+  .hero-sub {
+    color: var(--muted);
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    max-width: 44ch;
+    margin: 22px 0 34px;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    gap: 12px 54px;
+    margin: 0 0 36px;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+  .stat-value {
+    order: -1;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.4rem, 4.5vw, 3.9rem);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .stat-label {
+    color: var(--muted);
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    margin-top: 10px;
+  }
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .signal {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    padding: 26px 24px 76px;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.22s ease;
+  }
+  .signal:hover {
+    transform: translateY(-3px);
+  }
+  .signal-rust {
+    background: var(--rust);
+    color: var(--rust-ink);
+  }
+  .signal-lime {
+    background: var(--lime);
+    color: var(--lime-ink);
+  }
+  .signal-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke-width: 3;
+    opacity: 0.22;
+  }
+  .signal-rust .signal-art {
+    stroke: #7e3410;
+  }
+  .signal-lime .signal-art {
+    stroke: #5f7a1e;
+  }
+  .signal-title {
+    position: relative;
+    font-family: var(--display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    line-height: 1.1;
+    max-width: 14ch;
+  }
+  .signal-blurb {
+    position: relative;
+    font-size: 0.92rem;
+    opacity: 0.88;
+    max-width: 30ch;
+  }
+  .signal-go {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    border: 1.5px solid currentColor;
+    transition: transform 0.22s ease;
+  }
+  .signal:hover .signal-go {
+    transform: translate(3px, 0);
+  }
+  .signal-go svg {
+    width: 20px;
+    height: 20px;
+  }
+  @media screen and (max-width: 640px) {
+    .stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px 12px;
+    }
+    .stat-value {
+      font-size: clamp(1.9rem, 9vw, 2.4rem);
+    }
+    .stat-label {
+      font-size: 0.68rem;
+    }
+    .signal-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+import { tools } from '../data/data.js';
+---
+
+<section class="page-section" id="tools" aria-labelledby="tools-title">
+  <div class="wrap">
+    <h2 class="section-head" id="tools-title">Daily stack</h2>
+    <p class="section-sub">
+      The tools I reach for when building APIs, interfaces, and contracts.
+    </p>
+    <ul class="tools-grid">
+      {
+        tools.map((tool) => (
+          <li class="tool-cell">
+            <p class="tool-name">{tool.name}</p>
+            <p class="tool-desc">{tool.desc}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .tools-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .tool-cell {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px 20px;
+  }
+  .tool-name {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .tool-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  @media screen and (max-width: 860px) {
+    .tools-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media screen and (max-width: 560px) {
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

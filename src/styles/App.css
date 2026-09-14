@@ -1,23 +1,129 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+:root {
+  --bg: #0e0e0e;
+  --panel: #161616;
+  --line: #232323;
+  --ink: #f5f4f0;
+  --muted: #a3a3a3;
+  --faint: #33302e;
+  --card: #ffffff;
+  --card-ink: #101010;
+  --card-muted: #6f6f6f;
+  --rust: #e0682a;
+  --rust-deep: #b34e18;
+  --rust-ink: #fff7f0;
+  --lime: #d7f651;
+  --lime-ink: #141a05;
+  --display: "Archivo", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --body: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Roboto Mono", ui-monospace, monospace;
+  --radius: 20px;
+  --wrap: 1180px;
+}
 
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto Mono", monospace;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: #0d1523;
-  color: white;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.55;
+  overflow-x: clip;
 }
 
 a {
   text-decoration: none;
-  color: white;
+  color: inherit;
 }
 
-/*========== common classes =========*/
+::selection {
+  background: var(--lime);
+  color: var(--lime-ink);
+}
 
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/*========== shared =========*/
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.display {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.section-anchor {
+  scroll-margin-top: 96px;
+}
+
+.section-head {
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+
+.section-sub {
+  color: var(--muted);
+  max-width: 62ch;
+  margin: 0 0 28px;
+}
+
+.page-section {
+  padding: 72px 0 8px;
+  scroll-margin-top: 110px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rust);
+  border-radius: 10px;
+  border: 2px solid var(--bg);
+}
+
+/* App shell */
+.container {
+  display: block;
+  min-height: 100vh;
+}
+
+.container-width {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 30px 28px 80px;
+}
+
+/* Legacy helpers retained for now */
 .button-grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -37,34 +143,8 @@ a {
   display: flex;
 }
 
-.container-width {
-  max-width: 1200px;
-  /* height: 100vh; */
-  margin: 0 auto;
-  padding: 30px;
-}
-
 .emoji {
   font-size: 1.3em;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #0d1523;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(#00c9ff, #92fe9d);
-  border-radius: 10px;
-}
-
-/* App.js */
-.container {
-  display: flex;
 }
 
 /* RESPONSIVE */

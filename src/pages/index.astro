@@ -1,204 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import LeftSidebar from '../components/sidebar/LeftSidebar.astro';
-import { Image } from 'astro:assets';
-import CoderImg from '../assets/coder.png';
-import AboutImg from '../assets/1.jpg';
-import ProjectDefaultImg from '../assets/project.jpeg';
-import { links, projects, experiences } from '../data/data.js';
+import TopNav from '../components/TopNav.astro';
+import ProfileCard from '../components/ProfileCard.astro';
+import HeroCopy from '../components/HeroCopy.astro';
+import ProjectsGrid from '../components/ProjectsGrid.astro';
+import ExperienceList from '../components/ExperienceList.astro';
+import ToolsGrid from '../components/ToolsGrid.astro';
+import ContactCta from '../components/ContactCta.astro';
 ---
 
 <Layout>
-  <!-- Static sidebar navigation -->
-  <LeftSidebar />
+  <div id="top">
+    <TopNav />
 
-  <main class="container-width">
-    <!-- Intro Section -->
-    <section class="intro" id="intro">
-      <p class="intro-first-line">HI, MY NAME IS</p>
-      <h1 class="name">Sumrender Singh.</h1>
-      <p class="name title-sub">I am a full-stack dev.</p>
-      <div class="intro-content">
-        <div class="coder-img-container">
-          <Image
-            class="coder-img"
-            src={CoderImg}
-            alt="Illustration of a coder working at a desk"
-            width={350}
-            height={420}
-            loading="eager"
-            fetchpriority="high"
-          />
-        </div>
-        <div class="one-liner">
-          <p>
-            I am a 4th year engineering graduate, interested in web development,
-            with a focus on the <u>BACK-END</u>.
-          </p>
-          <p>
-            Currently, I am exploring the field of{" "}
-            <span style="color: yellow;">web3</span> and learning about
-            creating smart contracts and their development.
-          </p>
-          <a class="main-button button-link" href="mailto:sumrenders@gmail.com">
-            Do You Want To Work With Me?
-          </a>
-        </div>
-      </div>
-    </section>
+    <main class="container-width">
+      <section class="hero" aria-label="Introduction">
+        <ProfileCard />
+        <HeroCopy />
+      </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-      <div class="left-about">
-        <h2 class="about-name">
-          I'm <span>Sumrender Singh.</span>
-        </h2>
-        <div class="about-content">
-          <div>
-            <p>
-              I have been coding<span class="emoji">👨‍💻</span> for nearly 3
-              years, learning something new each day. I love to delve into new
-              technologies and learn more about them.
-            </p>
-            <p>
-              When I am not coding, I like to play basketball
-              <span class="emoji">🏀</span>, badminton
-              <span class="emoji">🏸</span>and read web novels.
-              <span class="emoji">📖.</span>
-            </p>
-            <p>
-              My New Year's resolution is to start going to Gym 💪.
-            </p>
-            <p class="m-top">
-              My preferred weapons of choice <span class="emoji">👇.</span>
-            </p>
-          </div>
-          <div class="button-grid-container m-top">
-            <span class="grid-button text-center">React</span>
-            <span class="grid-button text-center">Express</span>
-            <span class="grid-button text-center">MongoDB</span>
-            <span class="grid-button text-center">Node</span>
-          </div>
-        </div>
-        <div class="github-container">
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://www.github.com/sumrender"
-            class="github button-link"
-          >
-            <span class="emoji">🔗</span> My Github
-          </a>
-        </div>
-      </div>
-      <div class="image right-about">
-        <Image
-          class="about-image"
-          src={AboutImg}
-          alt="Sumrender Singh profile image"
-          width={400}
-          height={400}
-          loading="lazy"
-        />
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-      <h2 class="projects-title">
-        <u> My Coding Projects</u> <span class="projects-emoji">🛠️</span>
-      </h2>
-      {projects.map((project) => (
-        <div class="project-container">
-          <h3 class="project-heading">{project.name}</h3>
-          <div class="project">
-            <div class="project-img-container">
-              <img
-                src={project.img || ProjectDefaultImg.src}
-                class="project-image"
-                alt={`Screenshot / graphic for ${project.name}`}
-                width="250"
-                height="200"
-                loading="lazy"
-              />
-            </div>
-            <div class="project-content">
-              <div>
-                <p class="project-desc">{project.desc}</p>
-                <div class="project-buttons">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    class="project-repo main-button button-link"
-                  >
-                    <span class="emoji">🔗</span>Go to Repo
-                  </a>
-                  {project.projectLink && (
-                    <a
-                      href={project.projectLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      class="project-repo main-button button-link"
-                    >
-                      <span class="emoji">🔗</span>Live Demo
-                    </a>
-                  )}
-                </div>
-              </div>
-              <div class="button-grid-container">
-                {project.stack.map((tech) => (
-                  <span class="grid-button text-center">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </section>
-
-    <!-- Experiences Section -->
-    <section class="experiences" id="experiences">
-      <h2 class="experiences-title">👨‍💻 My Experiences</h2>
-      {experiences.map((exp) => (
-        <div class="experience-container">
-          <div class="experience">
-            <p class="exp-date">{exp.date}</p>
-            <h3 class="exp-name">{exp.name}</h3>
-            <p class="exp-desc">{exp.desc}</p>
-          </div>
-        </div>
-      ))}
-    </section>
-  </main>
+      <ProjectsGrid />
+      <ExperienceList />
+      <ToolsGrid />
+      <ContactCta />
+    </main>
+  </div>
 </Layout>
 
 <style>
-  /* Local adjustments for button links and typography */
-  .button-link {
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    color: white;
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+    padding-top: 108px;
   }
-  .text-center {
-    text-align: center;
+  @media screen and (max-width: 960px) {
+    .hero {
+      grid-template-columns: minmax(0, 560px);
+      justify-content: center;
+    }
   }
-  .title-sub {
-    margin-top: 5px;
-  }
-  .projects-title, .experiences-title {
-    margin-top: 20px;
-    font-size: 40px;
-    font-weight: bolder;
-    text-align: center;
-  }
-  .project-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
+  @media screen and (max-width: 640px) {
+    .hero {
+      padding-top: 96px;
+      gap: 36px;
+    }
   }
 </style>

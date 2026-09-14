@@ -1,0 +1,199 @@
+---
+import { projects } from '../data/data.js';
+
+const hues = [16, 96, 210, 262, 150, 330];
+
+const cleanName = (name) =>
+  name.replace(/^(\p{Extended_Pictographic}|\p{Emoji_Presentation})\s*/u, "").trim();
+---
+
+<section class="page-section" id="projects" aria-labelledby="projects-title">
+  <div class="wrap">
+    <h2 class="section-head" id="projects-title">Recent projects</h2>
+    <p class="section-sub">
+      Six builds, each with a repo — backend systems, full-stack apps, and a
+      Web3 experiment.
+    </p>
+    <div class="project-grid">
+      {
+        projects.map((project, i) => (
+          <article class="project-card">
+            <div
+              class="project-media"
+              style={`--hue: ${hues[i % hues.length]}`}
+              aria-hidden="true"
+            >
+              <span class="project-mono">
+                {cleanName(project.name)
+                  .split(" ")
+                  .map((w) => w[0])
+                  .slice(0, 2)
+                  .join("")}
+              </span>
+              <svg class="project-lines" viewBox="0 0 400 250" aria-hidden="true">
+                <path d="M-20 200 C 80 180, 140 130, 170 80 S 260 20, 420 50" />
+                <path d="M-20 230 C 100 210, 200 170, 260 110 S 340 50, 420 90" />
+              </svg>
+            </div>
+            <div class="project-body">
+              <h3 class="project-name">{cleanName(project.name)}</h3>
+              <p class="project-desc">{project.desc}</p>
+              <ul class="stack" aria-label="Tech stack">
+                {project.stack.slice(0, 4).map((tech) => (
+                  <li>{tech}</li>
+                ))}
+              </ul>
+              <div class="project-links">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="plink"
+                >
+                  Repo
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 17 17 7" />
+                    <path d="M8 7h9v9" />
+                  </svg>
+                </a>
+                {project.projectLink && (
+                  <a
+                    href={project.projectLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="plink plink-live"
+                  >
+                    Live demo
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M7 17 17 7" />
+                      <path d="M8 7h9v9" />
+                    </svg>
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .project-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.22s ease, border-color 0.22s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-3px);
+    border-color: #3a3a3a;
+  }
+  .project-media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: hsl(var(--hue) 45% 14%);
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+  .project-mono {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 4rem;
+    letter-spacing: -0.03em;
+    color: hsl(var(--hue) 90% 62%);
+    opacity: 0.9;
+  }
+  .project-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: hsl(var(--hue) 80% 55% / 0.35);
+    stroke-width: 2.5;
+  }
+  .project-body {
+    padding: 20px 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  .project-name {
+    font-family: var(--display);
+    font-size: 1.02rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.92rem;
+    flex: 1;
+  }
+  .stack {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .stack li {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid #333;
+    color: #d6d6d6;
+  }
+  .project-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .plink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid #3a3a3a;
+    color: var(--ink);
+  }
+  .plink svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .plink-live {
+    background: var(--lime);
+    border-color: var(--lime);
+    color: var(--lime-ink);
+  }
+  @media screen and (max-width: 960px) {
+    .project-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media screen and (max-width: 640px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

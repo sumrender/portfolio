@@ -1,0 +1,101 @@
+---
+const items = [
+  {
+    href: "#top",
+    label: "Home",
+    icon: '<path d="M4 11.5 12 4l8 7.5"/><path d="M6.5 10.5V20h11v-9.5"/><path d="M10.5 20v-5h3v5"/>',
+  },
+  {
+    href: "#projects",
+    label: "Projects",
+    icon: '<path d="M4 7.5A1.5 1.5 0 0 1 5.5 6h5L12 7.5h6.5A1.5 1.5 0 0 1 20 9v9.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5Z"/>',
+  },
+  {
+    href: "#experience",
+    label: "Experience",
+    icon: '<rect x="4" y="8" width="16" height="11" rx="2"/><path d="M9 8V6.5A1.5 1.5 0 0 1 10.5 5h3A1.5 1.5 0 0 1 15 6.5V8"/><path d="M4 12.5h16"/>',
+  },
+  {
+    href: "#tools",
+    label: "Tools",
+    icon: '<path d="M14.5 6.5a4 4 0 0 0-5.6 4.8L4 16.2V20h3.8l4.9-4.9a4 4 0 0 0 4.8-5.6l-2.7 2.7-2.5-.7-.7-2.5Z"/>',
+  },
+  {
+    href: "#contact",
+    label: "Contact",
+    icon: '<path d="M5 19.5h14a1 1 0 0 0 1-1v-13a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1Z"/><path d="m5 7 7 5.5L19 7"/>',
+  },
+];
+---
+
+<nav class="topnav" aria-label="Primary">
+  {
+    items.map((item) => (
+      <a class="topnav-link" href={item.href}>
+        <svg
+          class="topnav-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          set:html={item.icon}
+        />
+        <span class="topnav-label">{item.label}</span>
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  .topnav {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    gap: 4px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(23, 23, 23, 0.92);
+    border: 1px solid #262626;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  }
+  .topnav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    color: #cfcfcf;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .topnav-link:hover {
+    background: #262626;
+    color: #fff;
+  }
+  .topnav-icon {
+    width: 19px;
+    height: 19px;
+    flex: none;
+  }
+  @media screen and (max-width: 719px) {
+    .topnav-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+    .topnav-link {
+      padding: 9px 12px;
+    }
+  }
+</style>
