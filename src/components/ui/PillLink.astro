@@ -6,14 +6,20 @@
 interface Props {
   href: string;
   live?: boolean;
+  label?: string;
 }
 
 import ArrowIcon from "./ArrowIcon.astro";
 
-const { href, live = false } = Astro.props;
+const { href, live = false, label } = Astro.props;
 ---
 
-<a href={href} target="_blank" rel="noreferrer" class={`plink${live ? " plink-live" : ""}`}><slot /> <ArrowIcon direction="up-right" /></a>
+<a
+  href={href}
+  target="_blank"
+  rel="noreferrer"
+  class={`plink${live ? " plink-live" : ""}`}
+  aria-label={label}><slot /> <ArrowIcon direction="up-right" /></a>
 
 <style>
   .plink {

@@ -36,7 +36,6 @@ import ArrowIcon from './ui/ArrowIcon.astro';
         <a
           class={`signal signal-${card.theme}`}
           href={card.href}
-          aria-label={`${card.title} — ${card.cta}`}
         >
           {card.theme === "rust" ? (
             <svg class="signal-art" viewBox="0 0 400 260" aria-hidden="true">
@@ -51,6 +50,7 @@ import ArrowIcon from './ui/ArrowIcon.astro';
           )}
           <span class="signal-title">{card.title}</span>
           <span class="signal-blurb">{card.blurb}</span>
+          <span class="visually-hidden"> — {card.cta}</span>
           <span class="signal-go" aria-hidden="true">
             <ArrowIcon />
           </span>

@@ -10,9 +10,9 @@ Direction contract (code-led): first viewport = two-column hero (white profile c
 
 ## Tokens
 
-- `--bg: #0e0e0e` page; `--panel: #161616` nav/footer lines `#232323`; `--ink: #f5f4f0`; `--muted: #a3a3a3`; `--faint: #33302e` (giant second headline line; 3.5:1+ as decorative large text only, never body).
+- `--bg: #0e0e0e` page; `--panel: #161616` nav/footer lines `#232323`; `--ink: #f5f4f0`; `--muted: #a3a3a3`; `--faint: #33302e` (decorative linework only, never text); `--headline-faint: #6e6860` (giant second headline line, 3.5:1 large text); `--headline-faint-warm: #8a8178` (giant contact line, 5.05:1 large text).
 - `--card: #ffffff`; `--card-ink: #101010`; `--card-muted: #6f6f6f`.
-- `--rust: #e0682a`; `--rust-deep: #b34e18`; `--rust-ink: #fff7f0`.
+- `--rust: #e0682a`; `--rust-deep: #b34e18`; `--rust-ink: #fff7f0` (note: `--rust` + `--rust-ink` is 3.2:1 — decorative/wash use only; the mailto CTA uses `--rust-deep` bg to hit 4.5:1 for normal text).
 - `--lime: #d7f651`; `--lime-ink: #141a05`.
 - Display: "Archivo" 800/900 + system fallbacks for all body text (no second webface — keeps the interface distinctive and the payload small). Headlines uppercase, letter-spacing -0.03em, line-height 0.95. Hero display intentionally one step smaller (`clamp(2.2rem, 5.5vw + 1rem, 5.2rem)`) so the right column compresses to the white card's height; section heads `clamp(1.9rem, 4vw, 3rem)`. Mono labels: "Roboto Mono" retained for small eyebrows/pills only.
 - Radii: cards 20px, pills 999px, inner media 16px. Borders: 1px `#262626` on dark cards; none on white card (soft offset shadow instead).

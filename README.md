@@ -64,7 +64,7 @@ All page content (projects, experience entries, social links, resume link) lives
 
 ## Deployment
 
-The site is a fully static build (`npm run build` → `dist/`) deployed to GitHub Pages with the custom domain **sumrender.in** (configured via DNS and the Astro `site` option in `astro.config.mjs`, which also feeds canonical URLs, the sitemap, and structured data).
+The site is a fully static build (`npm run build` → `dist/`) deployed to **sumrender.in** via a Cloudflare Worker (`wrangler.toml`, `dist/` as `[assets]`; security + cache headers in `public/_headers`, copied to `dist/` at build time). The custom domain is configured in the Cloudflare dashboard, which also feeds canonical URLs, the sitemap, and structured data via the Astro `site` option in `astro.config.mjs`.
 
 ## Design Agent
 

@@ -37,7 +37,9 @@ const { href, variant = "rust" } = Astro.props;
     height: 20px;
   }
   .cta-rust {
-    background: var(--rust);
+    /* Scoped to the CTA only: --rust (#e0682a) + --rust-ink is 3.2:1,
+       below the 4.5:1 bar for normal text. --rust-deep hits 4.93:1. */
+    background: var(--rust-deep);
     color: var(--rust-ink);
   }
   .cta-lime {

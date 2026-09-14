@@ -49,6 +49,7 @@ const cleanName = (name: string): string =>
               <div class="project-links">
                 <PillLink
                   href={project.link}
+                  label={`Repo: ${cleanName(project.name)}`}
                 >
                   Repo
                 </PillLink>
@@ -56,6 +57,7 @@ const cleanName = (name: string): string =>
                   <PillLink
                     href={project.projectLink}
                     live
+                    label={`Live demo: ${cleanName(project.name)}`}
                   >
                     Live demo
                   </PillLink>

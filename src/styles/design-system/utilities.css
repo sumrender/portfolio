@@ -41,3 +41,18 @@
   padding: 72px 0 8px;
   scroll-margin-top: 110px;
 }
+
+/* Visually hidden but announced by screen readers / agents.
+   Used to append CTA context to links whose visible text alone
+   would otherwise mismatch the accessible name. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

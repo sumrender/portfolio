@@ -24,11 +24,11 @@ Backend-leaning MERN engineer (Node, Express, MongoDB, React) with real internsh
 
 ## Operating Context
 
-Static single-page site at sumrender.in (Astro 5 static build, GitHub Pages). Content lives in `src/data/data.js` (projects, experiences, links). Contact via `mailto:sumrenders@gmail.com`. No backend, no blog CMS, no fake testimonials.
+Static single-page site at sumrender.in (Astro 5 static build, Cloudflare Worker via `wrangler deploy`). Content lives in `src/data/data.js` (projects, experiences, links). Contact via `mailto:sumrenders@gmail.com`. No backend, no blog CMS, no fake testimonials.
 
 ## Capabilities and Constraints
 
-- Astro static, no UI framework; keep build `npm run build` → `dist/` green and deployable to GitHub Pages.
+- Astro static, no UI framework; keep build `npm run build` → `dist/` green and deployable via `wrangler deploy`.
 - Preserve: name Sumrender Singh, real bio, 6 projects, 3 experiences, social/resume links, SEO meta + JSON-LD + sitemap.
 - Undecided: exact stats numbers, tools list, whether to add a contact form (mailto fallback required), portrait treatment.
 - Accessibility: semantic landmarks, keyboard-focusable nav/cards, alt text on images, 4.5:1 body contrast on dark bg.

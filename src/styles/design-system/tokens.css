@@ -20,7 +20,7 @@
   --muted: #a3a3a3; /* body copy on dark */
   --faint: #33302e; /* decorative only, never body */
   --headline-faint: #6e6860; /* giant second headline line on dark */
-  --headline-faint-warm: #4a453f; /* giant contact line on dark */
+  --headline-faint-warm: #8a8178; /* giant contact line on dark — ≥3:1 on --bg for large text */
 
   /* ---- light card ---- */
   --card: #ffffff;
