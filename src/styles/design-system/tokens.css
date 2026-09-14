@@ -1,0 +1,62 @@
+/* Design tokens — single source of truth for the portfolio visual world.
+   Every hard-coded color, radius, shadow, and duration in components
+   resolves to one of these. Rule: add a token only when it carries
+   semantic meaning and is used in 3+ places (or names a brand surface). */
+
+:root {
+  /* ---- dark surfaces ---- */
+  --bg: #0e0e0e;
+  --panel: #161616;
+  --line: #232323;
+  --line-strong: #3a3a3a; /* card hover borders, outlined controls */
+
+  /* ---- floating chrome (top nav pill) ---- */
+  --chrome-rgb: 23 23 23; /* used as rgb(var(--chrome-rgb) / 0.92) */
+  --chrome-line: #262626; /* chrome border + hover fill */
+
+  /* ---- ink on dark ---- */
+  --ink: #f5f4f0;
+  --ink-soft: #cfcfcf; /* nav links, stack tags */
+  --muted: #a3a3a3; /* body copy on dark */
+  --faint: #33302e; /* decorative only, never body */
+  --headline-faint: #6e6860; /* giant second headline line on dark */
+  --headline-faint-warm: #4a453f; /* giant contact line on dark */
+
+  /* ---- light card ---- */
+  --card: #ffffff;
+  --card-ink: #101010;
+  --card-muted: #6f6f6f;
+
+  /* ---- brand ---- */
+  --rust: #e0682a;
+  --rust-deep: #b34e18;
+  --rust-ink: #fff7f0;
+  --rust-line: #7e3410; /* linework on rust */
+  --rust-wash: rgba(224, 104, 42, 0.12); /* social hover fill */
+  --lime: #d7f651;
+  --lime-ink: #141a05;
+  --lime-line: #5f7a1e; /* linework on lime */
+
+  /* ---- type ---- */
+  --display: "Archivo", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --body: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Roboto Mono", ui-monospace, monospace;
+
+  /* ---- radii ---- */
+  --radius-sm: 12px; /* inner buttons (signal-go) */
+  --radius-md: 16px; /* cards, media */
+  --radius-lg: 20px; /* hero surfaces */
+  --radius: var(--radius-lg);
+  --radius-pill: 999px; /* pills, nav, cta */
+
+  /* ---- depth (offset + blur, never flat halos) ---- */
+  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.45); /* floating chrome */
+  --shadow-card: 0 24px 60px rgba(0, 0, 0, 0.45); /* white profile card */
+
+  /* ---- motion ---- */
+  --dur-fast: 0.18s;
+  --dur-med: 0.22s;
+
+  /* ---- layout ---- */
+  --wrap: 1180px;
+}

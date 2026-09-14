@@ -1,21 +1,24 @@
 ---
 import { experiences } from '../data/data.js';
+import SectionHead from './ui/SectionHead.astro';
+import Pill from './ui/Pill.astro';
 ---
 
 <section class="page-section" id="experience" aria-labelledby="experience-title">
   <div class="wrap exp-grid">
     <div class="exp-lede">
       <p class="display exp-count">03</p>
-      <h2 class="section-head" id="experience-title">Internships & experience</h2>
-      <p class="section-sub">
-        Agile product work, typed NestJS backends, and MERN feature delivery.
-      </p>
+      <SectionHead
+        id="experience-title"
+        title="Internships & experience"
+        lede="Agile product work, typed NestJS backends, and MERN feature delivery."
+      />
     </div>
     <ol class="exp-list">
       {
         experiences.map((exp) => (
           <li class="exp-row">
-            <p class="exp-date">{exp.date}</p>
+            <Pill as="p" variant="lime" class="exp-date">{exp.date}</Pill>
             <h3 class="exp-name">{exp.name}</h3>
             <p class="exp-desc">{exp.desc}</p>
           </li>
@@ -46,13 +49,6 @@ import { experiences } from '../data/data.js';
     border-bottom: 1px solid var(--line);
   }
   .exp-date {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.76rem;
-    color: var(--lime-ink);
-    background: var(--lime);
-    border-radius: 999px;
-    padding: 5px 12px;
     margin-bottom: 12px;
   }
   .exp-name {

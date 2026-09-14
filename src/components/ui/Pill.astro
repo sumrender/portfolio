@@ -1,0 +1,39 @@
+---
+/* Small label pill. Two variants, one intent: compact metadata.
+   - outline: stack tags on dark cards
+   - lime: date badges, status highlights
+   `as` lets list contexts render semantic <li>/<p>; `class` is a
+   layout-only passthrough (e.g. margin) — never restyle the pill. */
+
+interface Props {
+  variant?: "outline" | "lime";
+  as?: "span" | "li" | "p";
+  class?: string;
+}
+
+const { variant = "outline", as: Tag = "span", class: extra = "" } = Astro.props;
+---
+
+<Tag class={`pill pill-${variant}${extra ? ` ${extra}` : ""}`}><slot /></Tag>
+
+<style>
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    line-height: 1.4;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+  }
+  .pill-outline {
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+  }
+  .pill-lime {
+    background: var(--lime);
+    color: var(--lime-ink);
+    font-size: 0.76rem;
+    padding: 5px 12px;
+  }
+</style>

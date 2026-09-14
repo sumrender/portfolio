@@ -59,27 +59,27 @@ const items = [
     display: flex;
     gap: 4px;
     padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(23, 23, 23, 0.92);
-    border: 1px solid #262626;
+    border-radius: var(--radius-pill);
+    background: rgb(var(--chrome-rgb) / 0.92);
+    border: 1px solid var(--chrome-line);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    box-shadow: var(--shadow-float);
   }
   .topnav-link {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 8px 14px;
-    border-radius: 999px;
-    color: #cfcfcf;
+    border-radius: var(--radius-pill);
+    color: var(--ink-soft);
     font-size: 0.85rem;
     font-weight: 500;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background var(--dur-fast) ease, color var(--dur-fast) ease;
   }
   .topnav-link:hover {
-    background: #262626;
-    color: #fff;
+    background: var(--chrome-line);
+    color: var(--ink);
   }
   .topnav-icon {
     width: 19px;

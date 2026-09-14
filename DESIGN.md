@@ -14,9 +14,21 @@ Direction contract (code-led): first viewport = two-column hero (white profile c
 - `--card: #ffffff`; `--card-ink: #101010`; `--card-muted: #6f6f6f`.
 - `--rust: #e0682a`; `--rust-deep: #b34e18`; `--rust-ink: #fff7f0`.
 - `--lime: #d7f651`; `--lime-ink: #141a05`.
-- Display: "Archivo" 800/900 + system fallbacks for all body text (no second webface — keeps the interface distinctive and the payload small). Headlines uppercase, letter-spacing -0.03em, line-height 0.95, `clamp(3rem, 8vw, 7rem)`. Mono labels: "Roboto Mono" retained for small eyebrows/pills only.
+- Display: "Archivo" 800/900 + system fallbacks for all body text (no second webface — keeps the interface distinctive and the payload small). Headlines uppercase, letter-spacing -0.03em, line-height 0.95. Hero display intentionally one step smaller (`clamp(2.2rem, 5.5vw + 1rem, 5.2rem)`) so the right column compresses to the white card's height; section heads `clamp(1.9rem, 4vw, 3rem)`. Mono labels: "Roboto Mono" retained for small eyebrows/pills only.
 - Radii: cards 20px, pills 999px, inner media 16px. Borders: 1px `#262626` on dark cards; none on white card (soft offset shadow instead).
 - Focus ring: 2px solid var(--lime) offset 3px on dark; rust on light.
+
+## Design System
+
+Centralized in `src/styles/design-system/` (`tokens.css` — single `:root`
+truth; `utilities.css` — `.wrap/.display/.section-*`; `README.md` — usage
+table). Shared primitives in `src/components/ui/`: `ArrowIcon` (right /
+up-right), `Pill` (outline stack tags / lime date badges), `PillLink`
+(repo/demo links), `CtaButton` (rust primary CTA), `SectionHead` (title +
+lede). `App.css` holds base elements / shell / scrollbar only; all
+component color, radius, shadow, and duration values resolve to tokens.
+Portrait duotone wash intentionally stays local (photographic blend, not a
+brand token).
 
 ## Components
 

@@ -1,5 +1,6 @@
 ---
 import { stats, highlightCards } from '../data/data.js';
+import ArrowIcon from './ui/ArrowIcon.astro';
 ---
 
 <div class="hero-copy">
@@ -51,10 +52,7 @@ import { stats, highlightCards } from '../data/data.js';
           <span class="signal-title">{card.title}</span>
           <span class="signal-blurb">{card.blurb}</span>
           <span class="signal-go" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 12h15" />
-              <path d="m13 6 6 6-6 6" />
-            </svg>
+            <ArrowIcon />
           </span>
         </a>
       ))
@@ -110,9 +108,11 @@ import { stats, highlightCards } from '../data/data.js';
     min-width: 0;
     max-width: 100%;
     overflow-wrap: anywhere;
+    display: flex;
+    flex-direction: column;
   }
   .hero-title {
-    font-size: clamp(2.6rem, 8vw + 1rem, 6.8rem);
+    font-size: clamp(2.2rem, 5.5vw + 1rem, 5.2rem);
     max-width: 11ch;
   }
   .hero-title span {
@@ -122,20 +122,20 @@ import { stats, highlightCards } from '../data/data.js';
     color: var(--ink);
   }
   .line-faint {
-    color: #6e6860;
+    color: var(--headline-faint);
   }
   .hero-sub {
     color: var(--muted);
     font-size: clamp(1rem, 1.6vw, 1.2rem);
     max-width: 44ch;
-    margin: 22px 0 34px;
+    margin: 20px 0 30px;
   }
   .stats {
     display: grid;
     grid-template-columns: repeat(3, auto);
     justify-content: start;
     gap: 12px 54px;
-    margin: 0 0 36px;
+    margin: 0 0 32px;
   }
   .stat {
     display: flex;
@@ -161,17 +161,18 @@ import { stats, highlightCards } from '../data/data.js';
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
+    margin-top: auto;
   }
   .signal {
     position: relative;
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     padding: 26px 24px 76px;
     min-height: 240px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    transition: transform 0.22s ease;
+    transition: transform var(--dur-med) ease;
   }
   .signal:hover {
     transform: translateY(-3px);
@@ -194,10 +195,10 @@ import { stats, highlightCards } from '../data/data.js';
     opacity: 0.22;
   }
   .signal-rust .signal-art {
-    stroke: #7e3410;
+    stroke: var(--rust-line);
   }
   .signal-lime .signal-art {
-    stroke: #5f7a1e;
+    stroke: var(--lime-line);
   }
   .signal-title {
     position: relative;
@@ -221,11 +222,11 @@ import { stats, highlightCards } from '../data/data.js';
     bottom: 18px;
     width: 42px;
     height: 42px;
-    border-radius: 12px;
+    border-radius: var(--radius-sm);
     display: grid;
     place-items: center;
     border: 1.5px solid currentColor;
-    transition: transform 0.22s ease;
+    transition: transform var(--dur-med) ease;
   }
   .signal:hover .signal-go {
     transform: translate(3px, 0);

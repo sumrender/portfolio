@@ -1,0 +1,39 @@
+---
+/* Outlined pill link — Repo links on project cards, generic secondary
+   actions. For the primary rust mailto CTA, see CtaButton (rust variant).
+   External-link attributes are the caller's job (target/rel). */
+
+interface Props {
+  href: string;
+  live?: boolean;
+}
+
+import ArrowIcon from "./ArrowIcon.astro";
+
+const { href, live = false } = Astro.props;
+---
+
+<a href={href} target="_blank" rel="noreferrer" class={`plink${live ? " plink-live" : ""}`}><slot /> <ArrowIcon direction="up-right" /></a>
+
+<style>
+  .plink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line-strong);
+    color: var(--ink);
+  }
+  .plink svg {
+    width: 14px;
+    height: 14px;
+  }
+  .plink-live {
+    background: var(--lime);
+    border-color: var(--lime);
+    color: var(--lime-ink);
+  }
+</style>

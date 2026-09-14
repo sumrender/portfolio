@@ -1,5 +1,6 @@
 ---
 import { links } from '../data/data.js';
+import CtaButton from './ui/CtaButton.astro';
 ---
 
 <section class="page-section contact" id="contact" aria-labelledby="contact-title">
@@ -13,13 +14,9 @@ import { links } from '../data/data.js';
       inbox is open.
     </p>
     <div class="contact-actions">
-      <a class="contact-primary" href="mailto:sumrenders@gmail.com">
+      <CtaButton href="mailto:sumrenders@gmail.com" variant="rust">
         sumrenders@gmail.com
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 12h15" />
-          <path d="m13 6 6 6-6 6" />
-        </svg>
-      </a>
+      </CtaButton>
       <div class="contact-links">
         <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>
         <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
@@ -46,7 +43,7 @@ import { links } from '../data/data.js';
     display: block;
   }
   .contact-faint {
-    color: #4a453f;
+    color: var(--headline-faint-warm);
   }
   .contact-actions {
     display: flex;
@@ -54,30 +51,6 @@ import { links } from '../data/data.js';
     align-items: center;
     gap: 22px;
     margin: 26px 0 54px;
-  }
-  .contact-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--rust);
-    color: var(--rust-ink);
-    font-weight: 600;
-    font-size: 1.02rem;
-    padding: 16px 26px;
-    border-radius: 999px;
-    transition: transform 0.2s ease;
-  }
-  .contact-primary:hover {
-    transform: translateY(-2px);
-  }
-  .contact-primary svg {
-    width: 20px;
-    height: 20px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
   }
   .contact-links {
     display: flex;

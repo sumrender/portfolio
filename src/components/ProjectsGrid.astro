@@ -1,5 +1,8 @@
 ---
 import { projects } from '../data/data.js';
+import SectionHead from './ui/SectionHead.astro';
+import Pill from './ui/Pill.astro';
+import PillLink from './ui/PillLink.astro';
 
 const hues = [16, 96, 210, 262, 150, 330];
 
@@ -9,11 +12,11 @@ const cleanName = (name) =>
 
 <section class="page-section" id="projects" aria-labelledby="projects-title">
   <div class="wrap">
-    <h2 class="section-head" id="projects-title">Recent projects</h2>
-    <p class="section-sub">
-      Six builds, each with a repo — backend systems, full-stack apps, and a
-      Web3 experiment.
-    </p>
+    <SectionHead
+      id="projects-title"
+      title="Recent projects"
+      lede="Six builds, each with a repo — backend systems, full-stack apps, and a Web3 experiment."
+    />
     <div class="project-grid">
       {
         projects.map((project, i) => (
@@ -40,35 +43,22 @@ const cleanName = (name) =>
               <p class="project-desc">{project.desc}</p>
               <ul class="stack" aria-label="Tech stack">
                 {project.stack.slice(0, 4).map((tech) => (
-                  <li>{tech}</li>
+                  <Pill as="li" variant="outline">{tech}</Pill>
                 ))}
               </ul>
               <div class="project-links">
-                <a
+                <PillLink
                   href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  class="plink"
                 >
                   Repo
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M7 17 17 7" />
-                    <path d="M8 7h9v9" />
-                  </svg>
-                </a>
+                </PillLink>
                 {project.projectLink && (
-                  <a
+                  <PillLink
                     href={project.projectLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    class="plink plink-live"
+                    live
                   >
                     Live demo
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M7 17 17 7" />
-                      <path d="M8 7h9v9" />
-                    </svg>
-                  </a>
+                  </PillLink>
                 )}
               </div>
             </div>
@@ -88,15 +78,15 @@ const cleanName = (name) =>
   .project-card {
     background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.22s ease, border-color 0.22s ease;
+    transition: transform var(--dur-med) ease, border-color var(--dur-med) ease;
   }
   .project-card:hover {
     transform: translateY(-3px);
-    border-color: #3a3a3a;
+    border-color: var(--line-strong);
   }
   .project-media {
     aspect-ratio: 16 / 10;
@@ -148,43 +138,10 @@ const cleanName = (name) =>
     flex-wrap: wrap;
     gap: 8px;
   }
-  .stack li {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    padding: 4px 10px;
-    border-radius: 999px;
-    border: 1px solid #333;
-    color: #d6d6d6;
-  }
   .project-links {
     display: flex;
     gap: 10px;
     margin-top: 6px;
-  }
-  .plink {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.86rem;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 999px;
-    border: 1px solid #3a3a3a;
-    color: var(--ink);
-  }
-  .plink svg {
-    width: 14px;
-    height: 14px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .plink-live {
-    background: var(--lime);
-    border-color: var(--lime);
-    color: var(--lime-ink);
   }
   @media screen and (max-width: 960px) {
     .project-grid {

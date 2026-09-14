@@ -1,0 +1,43 @@
+/* Shared layout + section primitives. These are the only global classes
+   components may rely on; everything else lives in component scope or
+   src/components/ui/. */
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.display {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.section-anchor {
+  scroll-margin-top: 96px;
+}
+
+.section-head {
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+
+.section-sub {
+  color: var(--muted);
+  max-width: 62ch;
+  margin: 0 0 28px;
+}
+
+.page-section {
+  padding: 72px 0 8px;
+  scroll-margin-top: 110px;
+}

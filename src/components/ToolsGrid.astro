@@ -1,13 +1,15 @@
 ---
 import { tools } from '../data/data.js';
+import SectionHead from './ui/SectionHead.astro';
 ---
 
 <section class="page-section" id="tools" aria-labelledby="tools-title">
   <div class="wrap">
-    <h2 class="section-head" id="tools-title">Daily stack</h2>
-    <p class="section-sub">
-      The tools I reach for when building APIs, interfaces, and contracts.
-    </p>
+    <SectionHead
+      id="tools-title"
+      title="Daily stack"
+      lede="The tools I reach for when building APIs, interfaces, and contracts."
+    />
     <ul class="tools-grid">
       {
         tools.map((tool) => (
@@ -31,7 +33,7 @@ import { tools } from '../data/data.js';
   .tool-cell {
     background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     padding: 22px 20px;
   }
   .tool-name {

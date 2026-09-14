@@ -1,0 +1,47 @@
+---
+/* Primary call-to-action button. Variants:
+   - rust: the single conversion action (mailto on the contact section)
+   - lime: reserved for a future light-surface primary; do not use on dark
+     for secondary actions — use PillLink instead.
+   Renders <a> (current uses are links). If a real <button> is ever needed,
+   extend with an `as` prop rather than forking the style. */
+
+interface Props {
+  href: string;
+  variant?: "rust" | "lime";
+}
+
+import ArrowIcon from "./ArrowIcon.astro";
+
+const { href, variant = "rust" } = Astro.props;
+---
+
+<a class={`cta cta-${variant}`} href={href}><slot /> <ArrowIcon /></a>
+
+<style>
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 1.02rem;
+    padding: 16px 26px;
+    border-radius: var(--radius-pill);
+    transition: transform var(--dur-fast) ease;
+  }
+  .cta:hover {
+    transform: translateY(-2px);
+  }
+  .cta svg {
+    width: 20px;
+    height: 20px;
+  }
+  .cta-rust {
+    background: var(--rust);
+    color: var(--rust-ink);
+  }
+  .cta-lime {
+    background: var(--lime);
+    color: var(--lime-ink);
+  }
+</style>
