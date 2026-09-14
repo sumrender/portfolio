@@ -1,17 +1,19 @@
 ---
-import { experiences } from '../data/data.ts';
+import { experiences, sectionMeta } from '../data/data.ts';
 import SectionHead from './ui/SectionHead.astro';
 import Pill from './ui/Pill.astro';
+
+const count = String(experiences.length).padStart(2, '0');
 ---
 
 <section class="page-section" id="experience" aria-labelledby="experience-title">
   <div class="wrap exp-grid">
     <div class="exp-lede">
-      <p class="display exp-count">03</p>
+      <p class="display exp-count">{count}</p>
       <SectionHead
         id="experience-title"
-        title="Internships & experience"
-        lede="Agile product work, typed NestJS backends, and MERN feature delivery."
+        title={sectionMeta.experience.title}
+        lede={sectionMeta.experience.lede}
       />
     </div>
     <ol class="exp-list">

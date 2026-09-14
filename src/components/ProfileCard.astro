@@ -1,30 +1,15 @@
 ---
 import { Image } from 'astro:assets';
 import Portrait from '../assets/1.jpg';
-import { links } from '../data/data.ts';
+import { profile, socials } from '../data/data.ts';
+import type { SocialId } from '../contracts/interfaces.ts';
 
-const socials = [
-  {
-    href: links.github,
-    label: "GitHub profile",
-    icon: '<path d="M12 3.5a8.5 8.5 0 0 0-2.7 16.6c.4.1.6-.2.6-.4v-1.5c-2.4.5-2.9-1-2.9-1-.4-1-1-1.2-1-1.2-.8-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.8 1.4 2.1 1 2.6.8.1-.6.3-1 .6-1.3-2-.2-4-1-4-4.4 0-1 .3-1.8 1-2.4-.1-.2-.5-1.2.1-2.4 0 0 .8-.2 2.5.9a8.6 8.6 0 0 1 4.6 0c1.7-1.1 2.5-.9 2.5-.9.6 1.2.2 2.2.1 2.4.6.6 1 1.4 1 2.4 0 3.4-2 4.2-4 4.4.4.3.7.9.7 1.9v2.8c0 .2.2.5.6.4a8.5 8.5 0 0 0-2.7-16.6Z"/>',
-  },
-  {
-    href: links.linkedin,
-    label: "LinkedIn profile",
-    icon: '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8.5 10.5V16"/><circle cx="8.5" cy="8" r="1.1"/><path d="M12 16v-3.2c0-1 .8-1.8 1.9-1.8s1.9.8 1.9 1.8V16"/><path d="M12 10.7V12"/>',
-  },
-  {
-    href: links.twitter,
-    label: "Twitter profile",
-    icon: '<path d="M4 4.5 10.8 14 4.4 19.5h2.3l5-4.3 4 4.3H20l-7.1-9.9 6.2-5.1h-2.3l-4.4 3.8-3.6-3.8Z"/>',
-  },
-  {
-    href: links.resume,
-    label: "Resume",
-    icon: '<path d="M6 3.5h8L19 8.5V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1Z"/><path d="M13.5 3.5v5.5H19"/><path d="M8.5 13.5h7M8.5 16.5h5"/>',
-  },
-];
+const icons: Record<SocialId, string> = {
+  github: '<path d="M12 3.5a8.5 8.5 0 0 0-2.7 16.6c.4.1.6-.2.6-.4v-1.5c-2.4.5-2.9-1-2.9-1-.4-1-1-1.2-1-1.2-.8-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.8 1.4 2.1 1 2.6.8.1-.6.3-1 .6-1.3-2-.2-4-1-4-4.4 0-1 .3-1.8 1-2.4-.1-.2-.5-1.2.1-2.4 0 0 .8-.2 2.5.9a8.6 8.6 0 0 1 4.6 0c1.7-1.1 2.5-.9 2.5-.9.6 1.2.2 2.2.1 2.4.6.6 1 1.4 1 2.4 0 3.4-2 4.2-4 4.4.4.3.7.9.7 1.9v2.8c0 .2.2.5.6.4a8.5 8.5 0 0 0-2.7-16.6Z"/>',
+  linkedin: '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8.5 10.5V16"/><circle cx="8.5" cy="8" r="1.1"/><path d="M12 16v-3.2c0-1 .8-1.8 1.9-1.8s1.9.8 1.9 1.8V16"/><path d="M12 10.7V12"/>',
+  twitter: '<path d="M4 4.5 10.8 14 4.4 19.5h2.3l5-4.3 4 4.3H20l-7.1-9.9 6.2-5.1h-2.3l-4.4 3.8-3.6-3.8Z"/>',
+  resume: '<path d="M6 3.5h8L19 8.5V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1Z"/><path d="M13.5 3.5v5.5H19"/><path d="M8.5 13.5h7M8.5 16.5h5"/>',
+};
 ---
 
 <article class="profile-card" aria-label="Profile">
@@ -42,7 +27,7 @@ const socials = [
     <Image
       class="portrait"
       src={Portrait}
-      alt="Portrait of Sumrender Singh"
+      alt={profile.portraitAlt}
       width={560}
       height={700}
       loading="eager"
@@ -50,7 +35,7 @@ const socials = [
     />
   </div>
 
-  <h2 class="profile-name">Sumrender Singh</h2>
+  <h2 class="profile-name">{profile.name}</h2>
 
   <div class="badge-row" aria-hidden="true">
     <svg class="trail trail-mid" viewBox="0 0 150 40" fill="none">
@@ -70,7 +55,7 @@ const socials = [
   </div>
 
   <p class="profile-role">
-    A full-stack developer who ships reliable backends and clean interfaces.
+    {profile.roleBlurb}
   </p>
 
   <div class="social-row">
@@ -91,7 +76,7 @@ const socials = [
             stroke-linecap="round"
             stroke-linejoin="round"
             aria-hidden="true"
-            set:html={s.icon}
+            set:html={icons[s.id]}
           />
         </a>
       ))

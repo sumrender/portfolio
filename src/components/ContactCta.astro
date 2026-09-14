@@ -1,32 +1,30 @@
 ---
-import { links } from '../data/data.ts';
+import { site, contact, socials } from '../data/data.ts';
 import CtaButton from './ui/CtaButton.astro';
 ---
 
 <section class="page-section contact" id="contact" aria-labelledby="contact-title">
   <div class="wrap contact-inner">
     <h2 class="display contact-title" id="contact-title">
-      <span>Let's work</span>
-      <span class="contact-faint">together</span>
+      <span>{contact.titleTop}</span>
+      <span class="contact-faint">{contact.titleBottom}</span>
     </h2>
     <p class="section-sub">
-      Hiring for a product engineer, or a full-stack role? My
-      inbox is open.
+      {contact.sub}
     </p>
     <div class="contact-actions">
-      <CtaButton href="mailto:sumrenders@gmail.com" variant="rust">
-        sumrenders@gmail.com
+      <CtaButton href={`mailto:${contact.email}`} variant="rust">
+        {contact.email}
       </CtaButton>
       <div class="contact-links">
-        <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>
-        <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href={links.twitter} target="_blank" rel="noreferrer">Twitter</a>
-        <a href={links.resume} target="_blank" rel="noreferrer">Resume</a>
+        {socials.map((s) => (
+          <a href={s.href} target="_blank" rel="noreferrer">{s.shortLabel}</a>
+        ))}
       </div>
     </div>
     <footer class="site-footer">
-      <p>© {new Date().getFullYear()} Sumrender Singh</p>
-      <p>Built with Astro · sumrender.in</p>
+      <p>© {new Date().getFullYear()} {site.name}</p>
+      <p>{contact.footerBuiltWith}</p>
     </footer>
   </div>
 </section>

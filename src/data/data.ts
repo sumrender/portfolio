@@ -1,43 +1,100 @@
-export interface Stat {
-  value: number;
-  prefix: string;
-  label: string;
-}
+import type {
+  Stat,
+  Tool,
+  HighlightCard,
+  SiteLinks,
+  Project,
+  Experience,
+  Site,
+  NavItem,
+  Hero,
+  Profile,
+  SectionMeta,
+  Social,
+  Contact,
+} from "../contracts/interfaces.ts";
 
-export interface Tool {
-  name: string;
-  desc: string;
-}
+export const site: Site = {
+  name: "Sumrender Singh",
+  domain: "sumrender.in",
+  url: "https://sumrender.in",
+  email: "sumrenders@gmail.com",
+  seoTitle: "Sumrender Singh | Full-Stack Software Engineer Portfolio",
+  seoDescription:
+    "Portfolio of Sumrender Singh - Full-stack web developer specializing in Back-End development, Node.js, Express, React, and Web3 smart contracts.",
+  jobTitle: "Full-Stack Developer",
+  knowsAbout: [
+    "Web Development",
+    "Back-End Development",
+    "Node.js",
+    "Express",
+    "React",
+    "MongoDB",
+    "Web3",
+    "Solidity",
+  ],
+};
 
-export interface HighlightCard {
-  theme: "rust" | "lime";
-  title: string;
-  blurb: string;
-  href: string;
-  cta: string;
-}
+export const navItems: NavItem[] = [
+  { id: "home", href: "#top", label: "Home" },
+  { id: "projects", href: "#projects", label: "Projects" },
+  { id: "experience", href: "#experience", label: "Experience" },
+  { id: "tools", href: "#tools", label: "Tools" },
+  { id: "contact", href: "#contact", label: "Contact" },
+];
 
-export interface SiteLinks {
-  linkedin: string;
-  github: string;
-  resume: string;
-  twitter: string;
-}
+export const hero: Hero = {
+  titleBright: "Product",
+  titleFaint: "Engineer",
+  sub: "Full stack developer turning ideas into cleanly built products.",
+};
 
-export interface Project {
-  name: string;
-  desc: string;
-  img: string;
-  stack: string[];
-  link: string;
-  projectLink: string;
-}
+export const profile: Profile = {
+  name: "Sumrender Singh",
+  portraitAlt: "Portrait of Sumrender Singh",
+  roleBlurb:
+    "A full-stack developer who ships reliable backends and clean interfaces.",
+};
 
-export interface Experience {
-  date: string;
-  name: string;
-  desc: string;
-}
+export const links: SiteLinks = {
+  linkedin: "https://www.linkedin.com/in/sumrendersingh/",
+  github: "https://github.com/sumrender",
+  resume:
+    "https://drive.google.com/drive/folders/12ozZfsPOeRnF4uVgKa6fL5hpu6Qi7VGk?usp=drive_link",
+  twitter: "https://x.com/sumrenders",
+};
+
+export const socials: Social[] = [
+  { id: "github", label: "GitHub profile", shortLabel: "GitHub", href: links.github },
+  { id: "linkedin", label: "LinkedIn profile", shortLabel: "LinkedIn", href: links.linkedin },
+  { id: "twitter", label: "Twitter profile", shortLabel: "Twitter", href: links.twitter },
+  { id: "resume", label: "Resume", shortLabel: "Resume", href: links.resume },
+];
+
+export const sectionMeta: Record<"projects" | "experience" | "tools", SectionMeta> = {
+  projects: {
+    title: "Recent projects",
+    lede:
+      "Six builds, each with a repo — backend systems, full-stack apps, and a Web3 experiment.",
+  },
+  experience: {
+    title: "Internships & experience",
+    lede:
+      "Agile product work, typed NestJS backends, and MERN feature delivery.",
+  },
+  tools: {
+    title: "Daily stack",
+    lede: "The tools I reach for when building APIs, interfaces, and contracts.",
+  },
+};
+
+export const contact: Contact = {
+  titleTop: "Let's work",
+  titleBottom: "together",
+  sub: "Hiring for a product engineer, or a full-stack role? My inbox is open.",
+  email: site.email,
+  footerBuiltWith: "Built with Astro · sumrender.in",
+};
 
 export const stats: Stat[] = [
   { value: 3, prefix: "+", label: "Years of coding" },
@@ -71,13 +128,6 @@ export const highlightCards: HighlightCard[] = [
   },
 ];
 
-export const links: SiteLinks = {
-  linkedin: "https://www.linkedin.com/in/sumrendersingh/",
-  github: "https://github.com/sumrender",
-  resume:
-    "https://drive.google.com/drive/folders/12ozZfsPOeRnF4uVgKa6fL5hpu6Qi7VGk?usp=drive_link",
-  twitter: "https://x.com/sumrenders",
-};
 export const projects: Project[] = [
   {
     name: "💸 Highest Stipend - Internshala",

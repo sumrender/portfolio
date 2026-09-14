@@ -1,36 +1,19 @@
 ---
-const items = [
-  {
-    href: "#top",
-    label: "Home",
-    icon: '<path d="M4 11.5 12 4l8 7.5"/><path d="M6.5 10.5V20h11v-9.5"/><path d="M10.5 20v-5h3v5"/>',
-  },
-  {
-    href: "#projects",
-    label: "Projects",
-    icon: '<path d="M4 7.5A1.5 1.5 0 0 1 5.5 6h5L12 7.5h6.5A1.5 1.5 0 0 1 20 9v9.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5Z"/>',
-  },
-  {
-    href: "#experience",
-    label: "Experience",
-    icon: '<rect x="4" y="8" width="16" height="11" rx="2"/><path d="M9 8V6.5A1.5 1.5 0 0 1 10.5 5h3A1.5 1.5 0 0 1 15 6.5V8"/><path d="M4 12.5h16"/>',
-  },
-  {
-    href: "#tools",
-    label: "Tools",
-    icon: '<path d="M14.5 6.5a4 4 0 0 0-5.6 4.8L4 16.2V20h3.8l4.9-4.9a4 4 0 0 0 4.8-5.6l-2.7 2.7-2.5-.7-.7-2.5Z"/>',
-  },
-  {
-    href: "#contact",
-    label: "Contact",
-    icon: '<path d="M5 19.5h14a1 1 0 0 0 1-1v-13a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1Z"/><path d="m5 7 7 5.5L19 7"/>',
-  },
-];
+import { navItems } from '../data/data.ts';
+import type { NavId } from '../contracts/interfaces.ts';
+
+const icons: Record<NavId, string> = {
+  home: '<path d="M4 11.5 12 4l8 7.5"/><path d="M6.5 10.5V20h11v-9.5"/><path d="M10.5 20v-5h3v5"/>',
+  projects: '<path d="M4 7.5A1.5 1.5 0 0 1 5.5 6h5L12 7.5h6.5A1.5 1.5 0 0 1 20 9v9.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5Z"/>',
+  experience: '<rect x="4" y="8" width="16" height="11" rx="2"/><path d="M9 8V6.5A1.5 1.5 0 0 1 10.5 5h3A1.5 1.5 0 0 1 15 6.5V8"/><path d="M4 12.5h16"/>',
+  tools: '<path d="M14.5 6.5a4 4 0 0 0-5.6 4.8L4 16.2V20h3.8l4.9-4.9a4 4 0 0 0 4.8-5.6l-2.7 2.7-2.5-.7-.7-2.5Z"/>',
+  contact: '<path d="M5 19.5h14a1 1 0 0 0 1-1v-13a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1Z"/><path d="m5 7 7 5.5L19 7"/>',
+};
 ---
 
 <nav class="topnav" aria-label="Primary">
   {
-    items.map((item) => (
+    navItems.map((item) => (
       <a class="topnav-link" href={item.href}>
         <svg
           class="topnav-icon"
@@ -41,7 +24,7 @@ const items = [
           stroke-linecap="round"
           stroke-linejoin="round"
           aria-hidden="true"
-          set:html={item.icon}
+          set:html={icons[item.id]}
         />
         <span class="topnav-label">{item.label}</span>
       </a>

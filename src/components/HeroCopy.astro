@@ -1,16 +1,15 @@
 ---
-import { stats, highlightCards } from '../data/data.ts';
+import { hero, stats, highlightCards } from '../data/data.ts';
 import ArrowIcon from './ui/ArrowIcon.astro';
 ---
 
 <div class="hero-copy">
   <h1 class="display hero-title">
-    <span class="line-bright">Product</span>
-    <span class="line-faint">Engineer</span>
+    <span class="line-bright">{hero.titleBright}</span>
+    <span class="line-faint">{hero.titleFaint}</span>
   </h1>
   <p class="hero-sub">
-    Full stack developer
-    turning ideas into cleanly built products.
+    {hero.sub}
   </p>
 
   <dl class="stats" id="stats">
